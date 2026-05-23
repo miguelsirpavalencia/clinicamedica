@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Listado de Pacientes</h2>
+
+<a href="/pacientes/crear"
+   class="btn btn-primary mb-3">
+
+   Nuevo Paciente
+
+</a>
+
+<table class="table table-bordered">
+
+    <thead>
+
+        <tr>
+
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for p in pacientes %}
+
+        <tr>
+
+            <td>{{ p.id_paciente }}</td>
+
+            <td>{{ p.nombre }}</td>
+
+            <td>{{ p.edad }}</td>
+
+            <td>{{ p.direccion }}</td>
+
+            <td>{{ p.telefono }}</td>
+
+            <td>
+
+                <a href="/pacientes/editar/{{ p.id_paciente }}"
+                   class="btn btn-warning btn-sm">
+
+                   Editar
+
+                </a>
+
+                <a href="/pacientes/eliminar/{{ p.id_paciente }}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('¿Desea eliminar este paciente?')">
+
+                   Eliminar
+
+                <a href="/consultas/historial/{{ p.id_paciente }}"
+                   class="btn btn-info btn-sm">
+
+                   Historial
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

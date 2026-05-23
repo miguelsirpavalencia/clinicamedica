@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Editar Médico</h2>
+
+<form method="POST">
+
+    <div class="mb-3">
+
+        <label>Nombre</label>
+
+        <input type="text"
+               name="nombre"
+               value="{{ medico.nombre }}"
+               class="form-control"
+               required>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Especialidad</label>
+
+        <input type="text"
+               name="especialidad"
+               value="{{ medico.especialidad }}"
+               class="form-control"
+               required>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Teléfono</label>
+
+        <input type="text"
+               name="telefono"
+               value="{{ medico.telefono }}"
+               class="form-control">
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Correo</label>
+
+        <input type="email"
+               name="correo"
+               value="{{ medico.correo }}"
+               class="form-control">
+
+    </div>
+
+    <button class="btn btn-primary">
+        Actualizar Médico
+    </button>
+
+</form>
+
+{% endblock %}

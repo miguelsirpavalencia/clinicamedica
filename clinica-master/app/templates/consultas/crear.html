@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Nueva Consulta</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label>Diagnóstico</label>
+        <textarea name="diagnostico" class="form-control" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label>Tratamiento</label>
+        <textarea name="tratamiento" class="form-control" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label>Médico</label>
+        <select name="id_medico" class="form-control" required>
+
+            {% for m in medicos %}
+
+            <option value="{{ m.id_medico }}">
+                {{ m.nombre }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Paciente</label>
+        <select name="id_paciente" class="form-control" required>
+
+            {% for p in pacientes %}
+
+            <option value="{{ p.id_paciente }}">
+                {{ p.nombre }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn btn-primary">
+        Guardar Consulta
+    </button>
+</form>
+
+{% endblock %}

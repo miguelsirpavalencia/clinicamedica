@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Listado de Médicos</h2>
+
+<a href="/medicos/crear"
+   class="btn btn-primary mb-3">
+
+   Nuevo Médico
+
+</a>
+
+<table class="table table-bordered">
+
+    <thead>
+
+        <tr>
+
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Especialidad</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for m in medicos %}
+
+        <tr>
+
+            <td>{{ m.id_medico }}</td>
+
+            <td>{{ m.nombre }}</td>
+
+            <td>{{ m.especialidad }}</td>
+
+            <td>{{ m.telefono }}</td>
+
+            <td>{{ m.correo }}</td>
+
+            <td>
+
+                <a href="/medicos/editar/{{ m.id_medico }}"
+                   class="btn btn-warning btn-sm">
+
+                   Editar
+
+                </a>
+
+                <a href="/medicos/eliminar/{{ m.id_medico }}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('¿Desea eliminar este médico?')">
+
+                   Eliminar
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

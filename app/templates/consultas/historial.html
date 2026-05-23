@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>
+    Historial Médico de:
+    {{ paciente.nombre }}
+</h2>
+
+<a href="/pacientes/" class="btn btn-secondary mb-3">Volver</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Médico</th>
+            <th>Diagnóstico</th>
+            <th>Tratamiento</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in consultas %}
+        <tr>
+            <td>{{ c.id_consulta }}</td>
+            <td>{{ c.fecha }}</td>
+            <td>{{ c.medico.nombre }}</td>
+            <td>{{ c.diagnostico }}</td>
+            <td>{{ c.tratamiento }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

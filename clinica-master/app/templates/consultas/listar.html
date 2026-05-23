@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Listado de Consultas</h2>
+<a href="/consultas/crear" class="btn btn-primary mb-3">Nueva Consulta</a>
+<a href="/consultas/reporte" class="btn btn-success mb-3">Exportar CSV</a>
+<form action="/consultas/buscar" method="GET" class="mb-3">
+    <div class="row">
+        <div class="col-md-4">
+            <input type="date" name="fecha" class="form-control">
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-dark">Buscar</button>
+        </div>
+    </div>
+</form>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Paciente</th>
+            <th>Médico</th>
+            <th>Diagnóstico</th>
+            <th>Tratamiento</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in consultas %}
+        <tr>
+            <td>{{ c.id_consulta }}</td>
+            <td>{{ c.fecha }}</td>
+            <td>{{ c.paciente.nombre }}</td>
+            <td>{{ c.medico.nombre }}</td>
+            <td>{{ c.diagnostico }}</td>
+            <td>{{ c.tratamiento }}</td>
+            <td>
+                <a href="/consultas/editar/{{ c.id_consulta }}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="/consultas/eliminar/{{ c.id_consulta }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar esta consulta?')">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
